@@ -42,7 +42,10 @@ const ProfileScreen = () => {
           email,
           password,
         }).unwrap();
+
+        // dispatches a setCredentials action to update the user's credentials in the Redux store 
         dispatch(setCredentials({ ...res }));
+
         toast.success('Profile updated successfully');
       } catch (err) {
         toast.error(err?.data?.message || err.error);
@@ -102,6 +105,8 @@ const ProfileScreen = () => {
           {loadingUpdateProfile && <Loader />}
         </Form>
       </Col>
+
+           {/* My orders */}
       <Col md={9}>
         <h2>My Orders</h2>
         {isLoading ? (

@@ -7,9 +7,11 @@ import CheckoutSteps from '../components/CheckoutSteps';
 import { saveShippingAddress } from '../slices/cartSlice';
 
 const ShippingScreen = () => {
+    // Retrieve the cart and its shippingAddress from the Redux state
   const cart = useSelector((state) => state.cart);
   const { shippingAddress } = cart;
 
+    // Initialize state variables for address, city, postal code, and country
   const [address, setAddress] = useState(shippingAddress.address || '');
   const [city, setCity] = useState(shippingAddress.city || '');
   const [postalCode, setPostalCode] = useState(

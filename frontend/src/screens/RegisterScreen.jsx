@@ -26,11 +26,15 @@ const RegisterScreen = () => {
   const sp = new URLSearchParams(search);
   const redirect = sp.get('redirect') || '/';
 
+
+
+  //  handle automatic redirection after successful registration
   useEffect(() => {
     if (userInfo) {
       navigate(redirect);
     }
   }, [navigate, redirect, userInfo]);
+
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -43,6 +47,7 @@ const RegisterScreen = () => {
         dispatch(setCredentials({ ...res }));
         navigate(redirect);
       } catch (err) {
+        // display error message if reistration fails
         toast.error(err?.data?.message || err.error);
       }
     }

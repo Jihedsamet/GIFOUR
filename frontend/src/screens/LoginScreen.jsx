@@ -20,6 +20,7 @@ const LoginScreen = () => {
 
   const { userInfo } = useSelector((state) => state.auth);
 
+  // extract and handle query parameters from the URL
   const { search } = useLocation();
   const sp = new URLSearchParams(search);
   const redirect = sp.get('redirect') || '/';
@@ -29,6 +30,8 @@ const LoginScreen = () => {
       navigate(redirect);
     }
   }, [navigate, redirect, userInfo]);
+
+  
 
   const submitHandler = async (e) => {
     e.preventDefault();

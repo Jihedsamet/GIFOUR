@@ -11,11 +11,15 @@ const PaymentScreen = () => {
   const cart = useSelector((state) => state.cart);
   const { shippingAddress } = cart;
 
+
+  // Check that the user has entered a shipping address before proceeding to the payment
   useEffect(() => {
     if (!shippingAddress.address) {
       navigate('/shipping');
     }
   }, [navigate, shippingAddress]);
+
+  
 
   const [paymentMethod, setPaymentMethod] = useState('PayPal');
 
